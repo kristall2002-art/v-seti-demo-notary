@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Аудит сайта: было → стало — нотариус Таракановский Л.Ф.</title>
+<style>
+  :root{--navy:#0f2c4c;--navy2:#14385f;--bordo:#7a1f2b;--bg:#f7f5f0;--ink:#1e2733;--muted:#5b6675;--bad:#b3261e;--good:#1f7a4d;--line:#e4ded3;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;}
+  .wrap{max-width:1100px;margin:0 auto;padding:32px 20px 60px;}
+  header{text-align:center;border-bottom:3px solid var(--bordo);padding-bottom:22px;margin-bottom:10px;}
+  h1{font-family:Georgia,'PT Serif',serif;color:var(--navy);font-size:30px;margin:0 0 8px;}
+  .sub{color:var(--muted);font-size:16px;margin:0;}
+  .brand{display:inline-block;margin-top:14px;font-weight:700;color:var(--navy);letter-spacing:.02em;}
+  .brand .dot{color:var(--bordo);}
+  .legend{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:18px 0 8px;font-size:14px;color:var(--muted);}
+  table{width:100%;border-collapse:collapse;margin-top:14px;background:#fff;box-shadow:0 8px 30px rgba(15,44,76,.08);border-radius:12px;overflow:hidden;}
+  caption{caption-side:top;text-align:left;font-family:Georgia,serif;color:var(--navy);font-size:19px;font-weight:700;padding:20px 16px 6px;}
+  th,td{padding:13px 15px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:15px;}
+  thead th{background:var(--navy);color:#fff;font-size:14px;letter-spacing:.02em;position:sticky;top:0;}
+  tbody tr:nth-child(even){background:#faf8f3;}
+  .crit{font-weight:600;color:var(--navy);width:22%;}
+  .was{color:var(--bad);width:28%;}
+  .now{color:var(--good);width:28%;}
+  .why{color:var(--muted);width:22%;font-size:14px;}
+  .was::before{content:"❌ ";}
+  .now::before{content:"✅ ";}
+  .grp td{background:var(--navy2);color:#fff;font-weight:700;font-family:Georgia,serif;font-size:15px;letter-spacing:.03em;}
+  .links{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .btn{display:inline-block;padding:11px 18px;border-radius:9px;text-decoration:none;font-weight:600;font-size:14px;}
+  .btn.old{background:#fff;color:var(--bad);border:1px solid var(--bad);}
+  .btn.new{background:var(--navy);color:#fff;}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px;}
+  @media (max-width:760px){
+    h1{font-size:23px;} th,td{font-size:13.5px;padding:10px 9px;}
+    .crit,.was,.now,.why{width:auto;}
+    .why{display:none;} thead th:nth-child(4){display:none;}
+  }
+  @media print{ body{background:#fff;} .wrap{padding:0;} table{box-shadow:none;} .btn{border:1px solid #ccc;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Аудит сайта: было → стало</h1>
+    <p class="sub">Нотариус Таракановский Л. Ф. • Санкт-Петербург • сайт казанская18.рф</p>
+    <span class="brand">В&nbsp;сети<span class="dot">.</span></span>
+  </header>
+
+  <div class="legend"><span>❌ — как сейчас на старом сайте</span><span>✅ — как в новой версии</span></div>
+
+  <table>
+    <caption>Что было не так и что мы улучшили</caption>
+    <thead>
+      <tr><th>Критерий</th><th>Сейчас</th><th>После редизайна</th><th>Почему это важно</th></tr>
+    </thead>
+    <tbody>
+      <tr class="grp"><td colspan="4">🔎 Видимость — вас находят</td></tr>
+      <tr><td class="crit">Поиск Яндекс / Google</td><td class="was">Сайта нет в топ-30 ни по одному запросу клиентов — место заняли агрегаторы</td><td class="now">SEO-структура, sitemap, регистрация в Яндекс.Вебмастере и Google</td><td class="why">Клиенты ищут «нотариус рядом» — вас там просто нет</td></tr>
+      <tr><td class="crit">Ответы нейросетей (ChatGPT, Алиса, GigaChat)</td><td class="was">Полностью невидим: нет llms.txt, Schema.org, FAQ — ИИ нечего процитировать</td><td class="now">llms.txt + Schema.org + FAQ-разметка — сайт попадает в ответы ИИ</td><td class="why">Люди всё чаще спрашивают нейросеть, а не поиск</td></tr>
+      <tr><td class="crit">Превью ссылки в мессенджерах</td><td class="was">Голая ссылка без картинки и описания</td><td class="now">Open Graph — красивое превью с названием и картинкой</td><td class="why">Ссылку в WhatsApp/Telegram открывают охотнее</td></tr>
+
+      <tr class="grp"><td colspan="4">📱 Удобство и доверие</td></tr>
+      <tr><td class="crit">Мобильная версия</td><td class="was">Нет — сайт не адаптирован под телефон</td><td class="now">Адаптив, удобно с любого телефона</td><td class="why">Большинство заходит с телефона; поиск понижает немобильные</td></tr>
+      <tr><td class="crit">Защита (HTTPS)</td><td class="was">Не работает — браузер пишет «Не защищено»</td><td class="now">HTTPS, замочек, данные под защитой</td><td class="why">Доверие клиента + плюс к ранжированию</td></tr>
+      <tr><td class="crit">Дизайн</td><td class="was">Шаблон ~2015 года, казённый, простыни текста без структуры</td><td class="now">Современный деловой стиль, воздух, блок доверия (32 года стажа)</td><td class="why">Первое впечатление = решение остаться или уйти</td></tr>
+      <tr><td class="crit">Скорость и движок</td><td class="was">Старый UMI.CMS, jQuery — тяжело и медленно</td><td class="now">Лёгкий быстрый сайт, мгновенная загрузка</td><td class="why">Медленный сайт теряет посетителей и позиции</td></tr>
+
+      <tr class="grp"><td colspan="4">⚙️ Функции, которые приводят и удерживают клиентов</td></tr>
+      <tr><td class="crit">Онлайн-запись</td><td class="was">Нет — только звонок в рабочие часы</td><td class="now">Форма записи с выбором услуги и времени</td><td class="why">Заявки идут даже ночью и в выходные</td></tr>
+      <tr><td class="crit">Загруженность и очереди</td><td class="was">Никак — клиент едет вслепую</td><td class="now">Светофор занятости + календарь загрузки по дням</td><td class="why">Поток распределяется — меньше очередей, меньше ушедших</td></tr>
+      <tr><td class="crit">Прайс</td><td class="was">Только PDF-файлом, на телефоне не открыть</td><td class="now">Тарифы текстом, сгруппированы, удобно читать</td><td class="why">Клиент видит цену сразу и не уходит к другим</td></tr>
+      <tr><td class="crit">Как добраться</td><td class="was">Нет карты</td><td class="now">Карта + ближайшее метро</td><td class="why">Проще доехать — больше доходят</td></tr>
+      <tr><td class="crit">Соцсети / MAX</td><td class="was">Не представлен нигде</td><td class="now">Концепт официального канала в MAX + ведение</td><td class="why">Новый источник клиентов и доверия</td></tr>
+    </tbody>
+  </table>
+
+  <div class="links">
+    <a class="btn old" href="http://xn--18-6kcaa4btd0a4b0k.xn--p1ai" target="_blank" rel="noopener">Старый сайт (как сейчас)</a>
+    <a class="btn new" href="https://kristall2002-art.github.io/v-seti-demo-notary/" target="_blank" rel="noopener">Новая версия (демо)</a>
+  </div>
+
+  <footer>Аудит и редизайн — «В сети». Демонстрационные материалы.</footer>
+</div>
+</body>
+</html>
