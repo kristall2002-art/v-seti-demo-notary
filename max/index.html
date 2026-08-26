@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Концепт: канал нотариуса Таракановского Л.Ф. в MAX</title>
+<meta name="description" content="Демонстрационный макет официального канала нотариуса в российском мессенджере MAX.">
+<meta name="theme-color" content="#5B21B6">
+<style>
+  :root{
+    --max-a:#7C3AED;
+    --max-b:#5B21B6;
+    --ink:#1a1730;
+    --muted:#6b6880;
+    --line:#eceaf3;
+    --feed:#f4f2f9;
+    --card:#ffffff;
+    --react:#f0edf9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 600px at 15% -10%, #efe9ff 0%, rgba(239,233,255,0) 55%),
+      radial-gradient(900px 500px at 100% 0%, #e6ecff 0%, rgba(230,236,255,0) 50%),
+      #f7f6fb;
+    min-height:100vh;
+    padding:32px 20px 64px;
+  }
+
+  /* ---------- Page header ---------- */
+  .page-head{max-width:1080px;margin:0 auto 26px;text-align:center}
+  .concept-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(135deg,var(--max-a),var(--max-b));
+    color:#fff;font-weight:700;font-size:13px;letter-spacing:.4px;
+    padding:8px 16px;border-radius:999px;text-transform:uppercase;
+    box-shadow:0 8px 22px rgba(92,33,182,.28);
+  }
+  .concept-badge::before{content:"◆";font-size:11px;opacity:.9}
+  .page-head h1{font-size:clamp(22px,3.4vw,34px);margin:16px 0 8px;line-height:1.2}
+  .page-head p{color:var(--muted);font-size:15px;max-width:640px;margin:0 auto}
+
+  /* ---------- Layout ---------- */
+  .stage{
+    max-width:1080px;margin:0 auto;
+    display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:start;
+  }
+  @media(max-width:900px){
+    .stage{grid-template-columns:1fr;gap:32px;justify-items:center}
+  }
+
+  /* ---------- Phone frame ---------- */
+  .phone-wrap{position:relative;justify-self:center}
+  .watermark{
+    position:absolute;top:-14px;right:-10px;z-index:5;
+    background:#ff5470;color:#fff;font-weight:800;font-size:12px;
+    letter-spacing:.5px;padding:7px 13px;border-radius:10px;
+    transform:rotate(6deg);box-shadow:0 6px 16px rgba(255,84,112,.4);
+    text-transform:uppercase;
+  }
+  .phone{
+    width:340px;height:710px;background:#0d0b18;border-radius:44px;
+    padding:12px;box-shadow:0 34px 70px -22px rgba(45,20,90,.55),0 0 0 2px rgba(255,255,255,.4);
+    position:relative;
+  }
+  .notch{
+    position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:120px;height:26px;background:#0d0b18;border-radius:0 0 16px 16px;z-index:4;
+  }
+  .screen{
+    width:100%;height:100%;background:var(--feed);border-radius:34px;
+    overflow:hidden;display:flex;flex-direction:column;position:relative;
+  }
+  .statusbar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 20px 6px;font-size:12px;font-weight:700;color:#2a2740;
+    background:#fff;
+  }
+  .statusbar .dots{letter-spacing:1px}
+
+  /* ---------- Channel header ---------- */
+  .ch-head{
+    background:linear-gradient(135deg,var(--max-a),var(--max-b));
+    color:#fff;padding:12px 16px 16px;position:relative;
+  }
+  .ch-top{display:flex;align-items:center;gap:12px}
+  .avatar{
+    width:52px;height:52px;border-radius:50%;flex:0 0 52px;
+    background:linear-gradient(135deg,#a78bfa,#6d28d9);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:19px;color:#fff;letter-spacing:.5px;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);
+  }
+  .ch-title{flex:1;min-width:0}
+  .ch-title .name{font-size:16px;font-weight:700;display:flex;align-items:center;gap:5px}
+  .ch-title .verify{font-size:13px}
+  .ch-title .sub{font-size:12px;opacity:.85;margin-top:2px}
+  .btn-sub{
+    background:#fff;color:var(--max-b);border:none;font-weight:700;
+    font-size:13px;padding:8px 15px;border-radius:999px;cursor:pointer;white-space:nowrap;
+  }
+  .ch-stats{display:flex;gap:16px;margin-top:12px;font-size:12px;opacity:.92}
+  .ch-stats b{font-weight:700}
+
+  /* ---------- Pinned info card ---------- */
+  .scroll{flex:1;overflow-y:auto;padding:12px 12px 16px}
+  .scroll::-webkit-scrollbar{width:0}
+  .pinned{
+    background:var(--card);border-radius:16px;padding:14px 15px;
+    box-shadow:0 4px 16px rgba(60,30,110,.08);border:1px solid var(--line);
+    margin-bottom:14px;position:relative;
+  }
+  .pinned .pin-tag{
+    font-size:11px;font-weight:700;color:var(--max-a);
+    display:flex;align-items:center;gap:5px;margin-bottom:9px;letter-spacing:.3px;
+  }
+  .info-row{display:flex;gap:9px;font-size:13px;margin:7px 0;line-height:1.35}
+  .info-row .ic{flex:0 0 18px;font-size:14px}
+  .info-row .lbl{color:var(--muted)}
+  .info-row .val{color:var(--ink);font-weight:600}
+  .btn-book{
+    display:block;width:100%;margin-top:12px;
+    background:linear-gradient(135deg,var(--max-a),var(--max-b));
+    color:#fff;border:none;font-weight:700;font-size:14px;
+    padding:11px;border-radius:12px;cursor:pointer;
+  }
+
+  /* ---------- Posts ---------- */
+  .post{
+    background:var(--card);border-radius:16px;padding:13px 15px 11px;
+    box-shadow:0 3px 12px rgba(60,30,110,.06);border:1px solid var(--line);
+    margin-bottom:12px;
+  }
+  .post .date{font-size:11px;color:var(--muted);margin-bottom:6px}
+  .post .ptitle{font-size:14px;font-weight:700;line-height:1.35;margin-bottom:6px}
+  .post .ptext{font-size:12.5px;color:#3b3852;line-height:1.5}
+  .post ul{list-style:none;margin:8px 0 2px}
+  .post ul li{
+    font-size:12.5px;color:#3b3852;line-height:1.5;padding-left:18px;position:relative;margin:3px 0;
+  }
+  .post ul li::before{content:"•";position:absolute;left:4px;color:var(--max-a);font-weight:800}
+  .post-foot{
+    display:flex;align-items:center;gap:8px;margin-top:11px;
+    padding-top:9px;border-top:1px solid var(--line);
+  }
+  .react{
+    background:var(--react);border-radius:999px;padding:4px 10px;
+    font-size:12px;font-weight:600;color:#4b2c86;display:inline-flex;align-items:center;gap:4px;
+  }
+  .views{margin-left:auto;font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:4px}
+
+  /* ---------- Bottom bar ---------- */
+  .bottombar{
+    display:flex;gap:10px;padding:11px 14px;background:#fff;
+    border-top:1px solid var(--line);
+  }
+  .bottombar button{
+    flex:1;border:none;border-radius:12px;font-weight:700;font-size:14px;
+    padding:12px;cursor:pointer;
+  }
+  .bb-sub{background:linear-gradient(135deg,var(--max-a),var(--max-b));color:#fff}
+  .bb-write{background:var(--react);color:var(--max-b)}
+
+  /* ---------- Explainer panel ---------- */
+  .explain{align-self:center;max-width:440px}
+  @media(max-width:900px){.explain{max-width:520px}}
+  .explain .kicker{
+    display:inline-block;background:#efe9ff;color:var(--max-b);
+    font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase;
+    padding:6px 12px;border-radius:8px;margin-bottom:14px;
+  }
+  .explain h2{font-size:26px;line-height:1.25;margin-bottom:14px}
+  .explain h2 .hl{color:var(--max-a)}
+  .explain>p{color:#4a4760;font-size:15px;line-height:1.65;margin-bottom:20px}
+  .feat-list{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+  .feat{
+    display:flex;gap:12px;align-items:flex-start;
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:13px 15px;box-shadow:0 3px 12px rgba(60,30,110,.05);
+  }
+  .feat .fic{
+    flex:0 0 38px;height:38px;border-radius:10px;
+    background:linear-gradient(135deg,#efe9ff,#e6ecff);
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+  }
+  .feat .ftxt strong{display:block;font-size:14.5px;margin-bottom:2px}
+  .feat .ftxt span{font-size:13px;color:var(--muted);line-height:1.45}
+  .cta-box{
+    background:linear-gradient(135deg,var(--max-a),var(--max-b));
+    color:#fff;border-radius:16px;padding:18px 20px;
+    box-shadow:0 14px 32px -10px rgba(92,33,182,.5);
+  }
+  .cta-box strong{display:block;font-size:16px;margin-bottom:6px}
+  .cta-box p{font-size:13.5px;line-height:1.55;opacity:.94}
+  .cta-box .tag{
+    display:inline-block;margin-top:12px;background:rgba(255,255,255,.18);
+    padding:6px 12px;border-radius:8px;font-size:12.5px;font-weight:600;
+  }
+
+  /* ---------- Footer disclaimer ---------- */
+  .disclaimer{
+    max-width:1080px;margin:40px auto 0;text-align:center;
+    color:#8b889c;font-size:12.5px;line-height:1.6;
+    border-top:1px solid var(--line);padding-top:20px;
+  }
+  .disclaimer b{color:#6b6880}
+</style>
+</head>
+<body>
+
+  <header class="page-head">
+    <span class="concept-badge">Концепт-макет</span>
+    <h1>Как может выглядеть ваш канал в мессенджере MAX</h1>
+    <p>Официальное присутствие нотариуса в российском мессенджере: новости, часы работы, ответы на частые вопросы и онлайн-запись — в одном месте.</p>
+  </header>
+
+  <main class="stage">
+
+    <!-- ============ PHONE ============ -->
+    <div class="phone-wrap">
+      <div class="watermark">Концепт-макет</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+
+          <div class="statusbar">
+            <span>9:41</span>
+            <span class="dots">MAX ▪ 5G ▪ ▮▮▮</span>
+          </div>
+
+          <!-- Channel header -->
+          <div class="ch-head">
+            <div class="ch-top">
+              <div class="avatar">ТЛ</div>
+              <div class="ch-title">
+                <div class="name">Нотариус Таракановский Л.Ф. <span class="verify">✔️</span></div>
+                <div class="sub">Официальный канал • Санкт-Петербург</div>
+              </div>
+              <button class="btn-sub">Подписаться</button>
+            </div>
+            <div class="ch-stats">
+              <span><b>1 248</b> подписчиков</span>
+              <span><b>37</b> публикаций</span>
+            </div>
+          </div>
+
+          <!-- Feed -->
+          <div class="scroll">
+
+            <!-- Pinned info -->
+            <div class="pinned">
+              <div class="pin-tag">📌 Закреплено · Контакты и запись</div>
+              <div class="info-row"><span class="ic">📍</span><span class="val">ул. Казанская, 18, Санкт-Петербург</span></div>
+              <div class="info-row"><span class="ic">🕐</span><span><span class="lbl">Пн–Пт</span> <span class="val">9:00–19:00</span> · <span class="lbl">Сб</span> <span class="val">9:00–18:00</span></span></div>
+              <div class="info-row"><span class="ic">📞</span><span class="val">315-25-23 · +7-921-916-41-53</span></div>
+              <button class="btn-book">📝 Записаться на приём</button>
+            </div>
+
+            <!-- Post 1 -->
+            <div class="post">
+              <div class="date">1 мая, 10:00</div>
+              <div class="ptitle">🕐 Режим работы в майские праздники</div>
+              <div class="ptext">1–4 мая — выходные. С 5 мая работаем в обычном режиме: Пн–Пт 9:00–19:00, Сб 9:00–18:00. Срочные вопросы — по телефону, запишем на удобное время.</div>
+              <div class="post-foot">
+                <span class="react">👍 34</span>
+                <span class="react">❤️ 12</span>
+                <span class="views">👁 1,1К</span>
+              </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="post">
+              <div class="date">28 апреля, 12:30</div>
+              <div class="ptitle">📋 Какие документы нужны для вступления в наследство</div>
+              <div class="ptext">Чтобы не приходить дважды, подготовьте заранее:</div>
+              <ul>
+                <li>Паспорт наследника</li>
+                <li>Свидетельство о смерти наследодателя</li>
+                <li>Справку о последнем месте жительства умершего</li>
+                <li>Правоустанавливающие документы на имущество</li>
+              </ul>
+              <div class="post-foot">
+                <span class="react">👍 58</span>
+                <span class="react">❤️ 21</span>
+                <span class="views">👁 2,4К</span>
+              </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="post">
+              <div class="date">24 апреля, 15:10</div>
+              <div class="ptitle">💡 Согласие на выезд ребёнка за границу — как оформить за 15 минут</div>
+              <div class="ptext">Нужен паспорт родителя и данные ребёнка. Готовим согласие сразу на приёме — можно указать одну поездку или срок до совершеннолетия. Перед сезоном отпусков лучше записаться заранее.</div>
+              <div class="post-foot">
+                <span class="react">👍 41</span>
+                <span class="react">❤️ 17</span>
+                <span class="views">👁 1,8К</span>
+              </div>
+            </div>
+
+            <!-- Post 4 -->
+            <div class="post">
+              <div class="date">20 апреля, 11:00</div>
+              <div class="ptitle">✅ Теперь к нотариусу можно записаться онлайн</div>
+              <div class="ptext">Не тратьте время в очереди — выберите удобный день прямо здесь, в канале. Мы подтвердим запись и напомним накануне.</div>
+              <div class="post-foot">
+                <span class="react">👍 76</span>
+                <span class="react">❤️ 29</span>
+                <span class="views">👁 3,0К</span>
+              </div>
+            </div>
+
+            <!-- Post 5 -->
+            <div class="post">
+              <div class="date">16 апреля, 09:40</div>
+              <div class="ptitle">⚖️ Нотариус — гарант законности сделки</div>
+              <div class="ptext">Почему важно заверять договоры: нотариус проверяет дееспособность сторон, законность условий и несёт ответственность за удостоверенную сделку. Это защита от оспаривания и мошенничества.</div>
+              <div class="post-foot">
+                <span class="react">👍 63</span>
+                <span class="react">❤️ 24</span>
+                <span class="views">👁 2,1К</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom bar -->
+          <div class="bottombar">
+            <button class="bb-sub">Подписаться</button>
+            <button class="bb-write">Написать</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ EXPLAINER ============ -->
+    <aside class="explain">
+      <span class="kicker">Что это</span>
+      <h2>Так может выглядеть <span class="hl">ваш официальный канал</span> в MAX</h2>
+      <p>MAX — российский мессенджер с быстрорастущей аудиторией. Официальный канал нотариуса находят в поиске, он повышает доверие и снимает часть звонков: люди сами видят часы работы, список документов и записываются онлайн.</p>
+
+      <div class="feat-list">
+        <div class="feat">
+          <div class="fic">📰</div>
+          <div class="ftxt"><strong>Новости и часы работы</strong><span>Праздничный график, изменения приёма — сразу у всех клиентов.</span></div>
+        </div>
+        <div class="feat">
+          <div class="fic">❓</div>
+          <div class="ftxt"><strong>Ответы на частые вопросы</strong><span>Какие документы принести, как оформить доверенность или согласие.</span></div>
+        </div>
+        <div class="feat">
+          <div class="fic">📝</div>
+          <div class="ftxt"><strong>Онлайн-запись</strong><span>Клиент выбирает время в канале — меньше очередей и звонков.</span></div>
+        </div>
+        <div class="feat">
+          <div class="fic">🔍</div>
+          <div class="ftxt"><strong>Находят в поиске MAX</strong><span>Растёт узнаваемость и доверие к вашему имени.</span></div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <strong>Ведём канал за вас — на автомате</strong>
+        <p>2–3 поста в неделю, обновление часов работы, ответы подписчикам. Вы только присылаете новости — остальное берём на себя.</p>
+        <span class="tag">Входит в пакеты ведения</span>
+      </div>
+    </aside>
+
+  </main>
+
+  <footer class="disclaimer">
+    <b>Демонстрационный макет — не действующий канал.</b><br>
+    Реальная публикация возможна после подтверждения нотариусом: требуется его аккаунт и согласие на ведение. Данные, реакции и просмотры показаны для примера.
+  </footer>
+
+</body>
+</html>
