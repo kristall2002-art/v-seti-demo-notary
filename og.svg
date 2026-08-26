@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2c4c"/>
+      <stop offset="1" stop-color="#14385f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="82%" cy="8%" r="55%">
+      <stop offset="0" stop-color="#7a1f2b" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#7a1f2b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="40" y="40" width="1120" height="550" rx="22" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+
+  <!-- монограмма -->
+  <rect x="90" y="238" width="150" height="150" rx="22" fill="#7a1f2b"/>
+  <text x="165" y="343" text-anchor="middle" font-family="Georgia,'PT Serif',serif" font-weight="700" font-size="76" fill="#ffffff">ТЛ</text>
+
+  <text x="290" y="252" font-family="Arial,'Segoe UI',sans-serif" font-size="26" letter-spacing="3" fill="#c6a6ac">НОТАРИУС САНКТ-ПЕТЕРБУРГА · С 1994 ГОДА</text>
+  <text x="290" y="330" font-family="Georgia,'PT Serif',serif" font-weight="700" font-size="70" fill="#ffffff">Таракановский</text>
+  <text x="290" y="405" font-family="Georgia,'PT Serif',serif" font-weight="700" font-size="70" fill="#ffffff">Леонид Феликсович</text>
+
+  <text x="290" y="470" font-family="Arial,'Segoe UI',sans-serif" font-size="30" fill="#d5dfeb">ул. Казанская, 18 · 8 (812) 315-25-23</text>
+  <text x="290" y="515" font-family="Arial,'Segoe UI',sans-serif" font-size="27" fill="#9fb1c6">Сделки · Наследство · Доверенности · Завещания · ООО</text>
+</svg>
